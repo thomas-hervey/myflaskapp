@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Public section, including homepage and signup."""
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask import Blueprint, flash, redirect, render_template, request, url_for, session
 from flask_login import login_required, login_user, logout_user
 
 from myflaskapp.extensions import login_manager
@@ -25,6 +25,7 @@ def home():
     # Handle logging in
     if request.method == 'POST':
         if form.validate_on_submit():
+            session['full'] = form['username']
             login_user(form.user)
             flash('You are logged in.', 'success')
             redirect_url = request.args.get('next') or url_for('user.members')
@@ -39,6 +40,7 @@ def home():
 def logout():
     """Logout."""
     logout_user()
+    session.pop('username', None)
     flash('You are logged out.', 'info')
     return redirect(url_for('public.home'))
 
