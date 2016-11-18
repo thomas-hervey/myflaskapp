@@ -49,11 +49,14 @@ def logout():
 def register():
     """Register new user."""
     form = RegisterForm(request.form, csrf_enabled=False)
+    print "1 reg"
     if form.validate_on_submit():
+        print "2 reg"
         User.create(username=form.username.data, email=form.email.data, password=form.password.data, active=True)
         flash('Thank you for registering. You can now log in.', 'success')
         return redirect(url_for('public.home'))
     else:
+        print "3 reg"
         flash_errors(form)
     return render_template('public/register.html', form=form)
 

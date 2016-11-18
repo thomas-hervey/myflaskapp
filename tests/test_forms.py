@@ -3,6 +3,7 @@
 
 from myflaskapp.public.forms import LoginForm
 from myflaskapp.user.forms import RegisterForm
+from myflaskapp.extraction.forms import RequestForm
 
 
 class TestRegisterForm:
@@ -66,3 +67,15 @@ class TestLoginForm:
         form = LoginForm(username=user.username, password='example')
         assert form.validate() is False
         assert 'User not activated' in form.username.errors
+
+
+class TestRequestForm:
+    """Request form."""
+    
+    def test_validate_success(self, user):
+        form = RequestForm(source='twitter')
+        assert form.validate() is True
+    
+    def test_invalid_fails(self, user):
+        form = RequestForm(source='other_source')
+        assert form.validate() is False

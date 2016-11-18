@@ -118,3 +118,26 @@ class TestRegistering:
         res = form.submit()
         # sees error
         assert 'Username already registered' in res
+
+
+# class Requesting:
+    
+    # def test_can_request(self, user, testapp):
+    #     """Register a new user."""
+    #     old_count = len(User.query.all())
+    #     # Goes to homepage
+    #     res = testapp.get('/')
+    #     # Clicks Create Account button
+    #     res = res.click('Create account')
+    #     # Fills out the form
+    #     form = res.forms['registerForm']
+    #     form['username'] = 'foobar'
+    #     form['email'] = 'foo@bar.com'
+    #     form['password'] = 'secret'
+    #     form['confirm'] = 'secret'
+    #     # Submits
+    #     res = form.submit().follow()
+    #     assert res.status_code == 200
+    #     # A new user was created
+    #     assert len(User.query.all()) == old_count + 1
+

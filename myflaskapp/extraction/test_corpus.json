@@ -1,0 +1,9 @@
+{
+  "string": "I love the city London in Canada",
+  "Expected_Values": {
+    "Canada": {"6251999" : 1},
+    "London, Canada": {"6058560" : 1}
+  }
+}
+
+6058560

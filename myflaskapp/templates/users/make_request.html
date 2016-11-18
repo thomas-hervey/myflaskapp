@@ -1,0 +1,16 @@
+
+{% extends "layout.html" %}
+{% block content %}
+    <h3>This is the request page.</h3>
+
+    {% if current_user and current_user.is_authenticated %}
+        <form id="requestForm" method="POST" class="form form-inline" action="/" role="form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="form-group">
+                {{form.source.label}}
+                {{ form.source(class_="form-control") }}
+            </div>
+            <button class="btn btn-default" type="submit" value="Request">Send Request</button>
+        </form>
+    {%  endif %}
+{% endblock %}

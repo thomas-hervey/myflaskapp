@@ -3,5 +3,6 @@
 {% block content %}
     <h1>Welcome {{ current_user.full_name }}!</h1>
     <h3>This is the members-only page.</h3>
+    <p><a href="{{ url_for('user.make_request') }}" class="btn btn-default"><i class="fa fa-search"></i> Make a request &raquo;</a></p>
 {% endblock %}
 
